@@ -12,20 +12,19 @@ function getRandomHexColor() {
 function createBoxes(amount) {
   boxes.innerHTML = "";
   let size = 30;
+  let boxesHTML = ""; 
   for (let i = 0; i < amount; i++) {
-   const box = document.createElement("div");
-   box.style.width = `${size}px`;
-   box.style.height = `${size}px`;
-   box.style.backgroundColor = getRandomHexColor();
-   boxes.appendChild(box);
+    boxesHTML += `<div style="width: ${size}px; height: ${size}px; background-color: ${getRandomHexColor()}"></div>`;
    size += 10; 
   }
+  boxes.innerHTML = boxesHTML; 
 }
 
 btnCreate.addEventListener("click", () => {
 const inputValue = Number(input.value);
 if (inputValue >= 1 && inputValue <= 100) {
  createBoxes(inputValue);
+ input.value = "";
 } else {
   alert("Please enter a number between 1 and 100");
 }
